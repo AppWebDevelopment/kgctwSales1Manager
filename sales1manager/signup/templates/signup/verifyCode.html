@@ -1,0 +1,50 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Boot strap -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <style>
+        .content{
+            height: 75%;
+        }
+        .panel-footer{
+            height:10%;
+            color:gray;
+        }
+    </style>
+
+    <title>Sales1Manager</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="page-header">
+                <h1>Channel Sales Department <small>Verify code</small></h1>
+            </div>
+        </div>
+        <div class="content">
+            <div class="mainDiv">
+                <h4>We sent the authentication code to your email for membership registration.</h4>
+                <h3>Please enter the authentication code of the email</h3><br>
+                <form action="/signup/verify/" method="POST">{% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">Authentication code</span>
+                        <input name='verifyCode' type="text" class="form-control" placeholder="Please insert the verification code." aria-describedby="basic-addon1">
+                    </div><br>
+                    <input type="submit" class="btn btn-success btn-lg" value="Authentication">
+                </form>
+            </div>
+        </div>
+        <div class="panel-footer">
+            Copyright by all rights reserved by 'KGCTW IT PART'
+        </div>
+    </div>
+</body>
+</html>

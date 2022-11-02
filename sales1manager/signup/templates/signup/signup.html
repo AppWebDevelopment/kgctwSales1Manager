@@ -1,0 +1,78 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Boot strap -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <style>
+        .content{
+            height: 75%;
+        }
+        .panel-footer{
+            height:10%;
+            color:gray;
+        }
+        .userInfoInputDiv{
+            text-align: center;
+        }
+
+    </style>
+    <script>
+        function submit_click(){
+            var pw = document.getElementById('signupPW').value
+            var pwcheck = document.getElementById('signupPWcheck').value
+            if(pw == pwcheck){
+                document.getElementById('signup-form').submit();
+            }else{
+                alert("비밀번호가 일치하지 않습니다.")
+                document.getElementById('signupPWcheck').focus()
+            }
+        }
+    </script>
+    <title>Sales1Manager</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="page-header">
+                <h1>Channel Sales Department<small>SignUp</small></h1>
+            </div>
+        </div>
+        <div class="content">
+            <div class="userInfoInputDiv">
+                <h1> Sign up for membership </h1><br>
+                <form action="/signup/email/" method="POST" id="signup-form">{% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-addon">Name</span>
+                        <input id="signupName" name='signupName' type="text" class="form-control" placeholder="Please insert your name." aria-describedby="basic-addon1">
+                    </div><br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Email</span>
+                        <input id="signupEmail" name='signupEmail' type="email" class="form-control" placeholder="Please insert your email." aria-describedby="basic-addon1">
+                    </div><br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Password</span>
+                        <input id="signupPW" name='signupPW' type="password" class="form-control" placeholder="Please insert your password." aria-describedby="basic-addon1">
+                    </div><br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Confirm password</span>
+                        <input id="signupPWcheck"  name='signupPWcheck' type="password" class="form-control" placeholder="Please insert your password." aria-describedby="basic-addon1">
+                    </div><br>
+                    <input type="button" class="btn btn-primary btn-lg" id="btn-submit" onclick="submit_click();" value="SignUp">
+                </form>
+                    
+                
+            </div>
+        </div>
+        <div class="panel-footer">
+            Copyright by all rights reserved by 'KGCTW IT PART'
+        </div>
+    </div>
+</body>
+</html>
