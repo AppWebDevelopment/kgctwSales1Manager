@@ -42,7 +42,9 @@
             <div class="fileListDIv">
                 <ul>
                     {% for document in documents %}
+                    <a href='download/?path={{ document.file_path.path }}'>
                     <li class="fileName"> {{ document.file_name }} <small style="font-size:12px; margin-left:5px;">{{ document.create_time }}<small></span></li>
+                    </a>
                     {% endfor %}
                 </ul>
             </div>

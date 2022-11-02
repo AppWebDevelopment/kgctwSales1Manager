@@ -1,9 +1,13 @@
+from email import message
 from django.shortcuts import render, redirect
 from signup.models import *
 import hashlib
 from django.core.exceptions import ObjectDoesNotExist
 from signup.models import *
 from upload.models import *
+import os
+from django.conf import settings
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -47,3 +51,17 @@ def logout(request):
     del request.session['user_id']
     del request.session['user_name']
     return redirect('main_loginView')
+
+def download(request):
+    path = request.GET['path']
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+
+    if os.path.exists(file_path):
+        binary_file = open(file_path, 'rb')
+        response = HttpResponse(binary_file.read(), content_type = "application/liquid; charset=utf-8")
+        response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
+        return response
+
+    else:
+        message = " An anknown error occured."
+        return render(request, 'main/error.html',{"message": message})
