@@ -65,3 +65,14 @@ def download(request):
     else:
         message = " An anknown error occured."
         return render(request, 'main/error.html',{"message": message})
+
+def result(request):
+    if 'user_name' in request.session.keys():
+        content = {}
+        content['grade_calculate_dic'] = request.session['grade_calculate_dic']
+        content['email_domain_dic'] = request.session['email_domain_dic']
+        del request.session['grade_calculate_dic']
+        del request.session['email_domain_dic']
+        return render(request, 'main/result.html', content)
+    else:
+        return redirect('main_login')

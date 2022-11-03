@@ -13,17 +13,17 @@
     <style>
         .content{
             height: 75%;
-            padding:10px;
+        }
+        .messageDiv{
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        .custom-btn{
+            font-size: 10px;
         }
         .panel-footer{
             height:10%;
             color:gray;
-        }
-        .fileListDIv{
-            padding:15px;
-        }
-        .fileName{
-            font-size: 18px;
         }
     </style>
 
@@ -34,21 +34,28 @@
         <div class="header">
             <div class="page-header">
                 <a href="/" class="btn btn-default btn-xs" style="margin: 10px">Home</a>
-                <h1>Channel Sales Department <small>Home</small><a href="/logout/" class="btn btn-danger btn-xs" style="margin-left: 30px">Logout</a></h1>
-                
+                <h1>Channel Sales Department <small>Excel Results</small></h1>
             </div>
         </div>
-        <div class="content">
-            <h3>List of file upload <small><a href="/upload/fileView/">Upload File</a><small></h3>
-            <div class="fileListDIv">
-                <ul>
-                    {% for document in documents %}
-                    <a href='download/?path={{ document.file_path.path }}'>
-                    <li class="fileName"> {{ document.file_name }} <small style="font-size:12px; margin-left:5px;">{{ document.create_time }}<small></span></li>
-                    </a>
-                    {% endfor %}
-                </ul>
+        <div class='body'>
+            <div class="resultDiv">
+                <h3> * Excel Results *</h3>
+                <h4> - Minimum, maximum, and average values by grade</h4>
+                {% for key, value in grade_calculate_dic.items %}
+                    <h5>GRADE: {{key}}</h5>
+                    <p><strong>최솟값: </strong>{{value.min}}</p>
+                    <p><strong>최댓값: </strong>{{value.max}}</p>
+                    <p><strong>평균값: </strong>{{value.avg}}</p>
+                    <br>
+                {% endfor %}
+                <br>
+                <h4> - Address Domain Person by Email </h4>
+                {% for key, value in email_domain_dic.items %}
+                    <p><strong>{{ key }}: </strong>{{value}}명</p>
+                {% endfor %}
+                <br>
             </div>
+            <hr>
         </div>
         <div class="panel-footer">
             Copyright by all rights reserved by 'KGCTW IT PART'

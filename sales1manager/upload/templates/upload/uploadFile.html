@@ -27,17 +27,26 @@
         }
     </style>
 
-    <title>실전 Sales1Manager</title>
+    <title>Sales1Manager</title>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="page-header">
+                <a href="/" class="btn btn-default btn-xs" style="margin: 10px">Home</a>
                 <h1>Channel Sales Department <small>File upload</small><a href="/logout/" class="btn btn-danger btn-xs" style="margin-left: 30px">Logout</a></h1>
             </div>
         </div>
         <div class="content">
-            <h3>File upload</h3>
+            <h3>Excel File upload</h3>
+            <form action="/calculate/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-group">
+                    Please upload the .xls file from the button below.<br>
+                    <input id="fileInput" name="fileInput" type="file" class="form-control">
+                    <input type="submit" class="btn btn-success btn-lg" value="Upload Excel File">
+                </div>
+            </form>
+            <h3>Attatch File upload</h3>
             <form action="/upload/file/" method="POST" enctype="multipart/form-data">{% csrf_token %}
                 <div class="input-group">
                     Please upload the file from the button below.<br>
