@@ -1,0 +1,91 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Boot strap -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <style>
+        .content{
+            height: 75%;
+        }
+        .messageDiv{
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        .custom-btn{
+            font-size: 10px;
+        }
+        .panel-footer{
+            height:10%;
+            color:gray;
+        }
+
+        p {
+            float: left;
+            border: 0px solid #000;
+            height: 20px;
+            text-align: center;
+            line-height: 15px;
+            font-weight: bold;
+            font-size: xx-small;
+        }
+        .boxlist1{
+            width: 50px;
+        }
+        .boxlist2{
+            width: 100px;
+        }
+        .boxlist3{
+            width: 350px;
+        }
+    </style>
+
+    <title>Sales1Manager</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="page-header">
+                <a href="/" class="btn btn-default btn-xs" style="margin: 10px">Home</a>
+                <h1>Channel Sales Department <small>Excel Results</small></h1>
+            </div>
+        </div>
+        <div class='body'>
+            <div class="resultDiv">
+                <h3> * Daily Results *</h3>
+                <br>
+                <br>
+ 
+               {% for content in contents %}
+                    <br>
+                    <p class="boxlist1">{{content.object.invoice_day_store.store_code}}</p>
+                    <p class="boxlist2">{{content.object.invoice_day_store.store_name}}</p>
+                    <p class="boxlist2">{{content.object.invoice_day_product.product_code_bystore}}</p>
+                    <p class="boxlist2">{{content.object.invoice_day_product.product_barcode}}</p>
+                    <p class="boxlist3">{{content.object.invoice_day_product.product_name}}</p>
+                    <p class="boxlist1">{{content.object.invoice_day_save}}</p>
+                    <p class="boxlist1">{{content.object.invoice_day_buy}}</p>
+                    <p class="boxlist1">{{content.object.invoice_day_return}}</p>
+                    <p class="boxlist1">{{content.object.invoice_day_sale}}</p>
+                    <p class="boxlist1">{{content.object.invoice_day_stock}}</p>
+
+                    <br>
+                  
+                
+                {% endfor %}
+                <br>
+            </div>
+            <hr>
+        </div>
+        <div class="panel-footer">
+            Copyright by all rights reserved by 'KGCTW IT PART'
+        </div>
+    </div>
+</body>
+</html>

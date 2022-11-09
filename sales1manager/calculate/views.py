@@ -4,6 +4,10 @@ import openpyxl
 from openpyxl.utils.dataframe import dataframe_to_rows
 import excel
 from pandas import DataFrame
+from uploadtodb.models import *
+from django.core import serializers
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 # Create your views here.
@@ -68,3 +72,29 @@ def calculate(request):
     request.session['grade_calculate_dic'] = grade_calculate_dic_to_session
     request.session['email_domain_dic'] = email_domain_dic
     return redirect('/result')
+
+
+def showDaily(request):
+    
+    contents = tbl_invoice_daily.objects.all()
+    request.session['show_daily_contents'] =   serializers.serialize("json",contents, cls=DjangoJSONEncoder)
+    
+    return redirect('/showdaily')
+   
+
+
+def calculateDaily(request):
+    
+    contents = tbl_invoice_daily.objects.all()
+
+    # a = contents.tbl_product.product_code
+    # b = contents.tbl_product.product_barcode
+    # c = contents.tbl_product.product_name
+    # d = 
+
+    request.session['calculate_daily_contents'] =   serializers.serialize("json",contents, cls=DjangoJSONEncoder)
+    
+    #return render(request, 'main/result_daily.html', {"contents": contents})
+    return redirect('/resultdaily')
+    # return HttpResponse("yes")
+

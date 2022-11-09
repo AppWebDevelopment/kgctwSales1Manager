@@ -18,7 +18,7 @@ def uploadFile(request):
         file_upload_name = now_HMS + '_' + origin_file_name
         user_file.name = file_upload_name
         user = User.objects.get(user_id=user_id)
-        document = Document(file_path = user_file, file_name=origin_file_name, user_id=user)
+        document = Document(file_path = user_file, file_name=origin_file_name, file_user=user)
         document.save()
     except:
         message = 'An unknown error occurred.'

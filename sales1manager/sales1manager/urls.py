@@ -22,4 +22,5 @@ urlpatterns = [
     path('calculate/', include('calculate.urls'), name='calculate'),
     path('', include('main.urls'), name='signup'),
     path('upload/', include('upload.urls'), name='upload'),
+    path('uploadtodb/', include('uploadtodb.urls'), name='upload_to_db'),
 ]

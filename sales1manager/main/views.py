@@ -8,7 +8,9 @@ from upload.models import *
 import os
 from django.conf import settings
 from django.http import HttpResponse
-
+from django.core import serializers
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 # Create your views here.
 
@@ -17,7 +19,7 @@ def index(request):
         return redirect('')
     user_id = request.session['user_id']
     user = User.objects.get(user_id = user_id)
-    documents = Document.objects.filter(user_id=user)
+    documents = Document.objects.filter(file_user=user)
     content = {'documents': documents}
     return render(request, 'main/index.html', content)
 
@@ -25,7 +27,7 @@ def loginView(request):
     return render(request, 'main/login.html')
 
 def login(request):
-    user_input_id = request.POST['loginEmail']
+    user_input_id = request.POST['loginID']
     user_input_pw = request.POST['loginPW']
     try:
         user = User.objects.get(user_id = user_input_id)
@@ -76,3 +78,27 @@ def result(request):
         return render(request, 'main/result.html', content)
     else:
         return redirect('main_login')
+
+def showDaily(request):
+
+    if 'show_daily_contents' in request.session.keys():
+        contents = serializers.deserialize("json", request.session['show_daily_contents'],cls=DjangoJSONEncoder)
+        del request.session['show_daily_contents']
+
+        return render(request, 'main/show_daily.html', {'contents': contents})
+    else:
+        return redirect('main_login')
+
+def resultDaily(request):
+
+    if 'calculate_daily_contents' in request.session.keys():
+        contents = serializers.deserialize("json", request.session['calculate_daily_contents'],cls=DjangoJSONEncoder)
+        # contents_json = request.session['calculate_daily_contents']
+        # contents = json.loads(contents_json)
+        # print("contents dejson",contents )
+        del request.session['calculate_daily_contents']
+
+        return render(request, 'main/result_daily.html', {'contents': contents})
+    else:
+        return redirect('main_login')
+

@@ -49,6 +49,10 @@
                 <h1> Sign up for membership </h1><br>
                 <form action="/signup/email/" method="POST" id="signup-form">{% csrf_token %}
                     <div class="input-group">
+                        <span class="input-group-addon">ID</span>
+                        <input id="signupID" name='signupID' type="text" class="form-control" placeholder="Please insert your ID." aria-describedby="basic-addon1">
+                    </div><br>
+                    <div class="input-group">
                         <span class="input-group-addon">Name</span>
                         <input id="signupName" name='signupName' type="text" class="form-control" placeholder="Please insert your name." aria-describedby="basic-addon1">
                     </div><br>

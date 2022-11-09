@@ -24,18 +24,20 @@
 </head>
 <body>
     <div class="container">
+        <nav>
         <div class="header">
             <div class="page-header">
                 <a href="/" class="btn btn-default btn-xs" style="margin: 10px">Home</a>
                 <h1>Channel Sales Department<small>Login</small></h1>
             </div>
         </div>
+    </nav>
         <div class="content">
             <div class="signinDiv">
                 <form action="login/" method="POST">{% csrf_token %}
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1">Email</span>
-                        <input name='loginEmail' type="email" class="form-control" placeholder="Please insert your email." style="width: 50%">
+                        <input name='loginID' type="text" class="form-control" placeholder="Please insert your ID." style="width: 50%">
                     </div><br>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1">Password</span>

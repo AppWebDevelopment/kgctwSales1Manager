@@ -38,6 +38,43 @@
             </div>
         </div>
         <div class="content">
+            <h3>store Excel File upload</h3>
+            <form action="/uploadtodb/store/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-group">
+                    Please upload the .xls file from the button below.<br>
+                    <input id="fileInput" name="fileInput" type="file" class="form-control">
+                    <input type="submit" class="btn btn-success btn-lg" value="Upload Excel File">
+                </div>
+            </form>
+        </hr>
+            <h3>Daily Excel File upload</h3>
+            <form action="/uploadtodb/daily/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-group">
+                    Please upload the .xls file from the button below.<br>
+                    <input id="fileInput" name="fileInput" type="file" class="form-control">
+                    <input type="submit" class="btn btn-success btn-lg" value="Upload Excel File">
+                </div>
+            </form>
+        </hr>
+            <h3>Monthly Excel File upload</h3>
+            <form action="/uploadtodb/monthly/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-group">
+                    Please upload the .xls file from the button below.<br>
+                    <input id="fileInput" name="fileInput" type="file" class="form-control">
+                    <input type="submit" class="btn btn-success btn-lg" value="Upload Excel File">
+                </div>
+            </form>
+        </hr>
+            <h3>Yearly Excel File upload</h3>
+            <form action="/uploadtodb/yearly/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-group">
+                    Please upload the .xls file from the button below.<br>
+                    <input id="fileInput" name="fileInput" type="file" class="form-control">
+                    <input type="submit" class="btn btn-success btn-lg" value="Upload Excel File">
+                </div>
+            </form>
+        </hr>
+        
             <h3>Excel File upload</h3>
             <form action="/calculate/" method="POST" enctype="multipart/form-data">{% csrf_token %}
                 <div class="input-group">
@@ -46,6 +83,7 @@
                     <input type="submit" class="btn btn-success btn-lg" value="Upload Excel File">
                 </div>
             </form>
+        </hr>
             <h3>Attatch File upload</h3>
             <form action="/upload/file/" method="POST" enctype="multipart/form-data">{% csrf_token %}
                 <div class="input-group">
