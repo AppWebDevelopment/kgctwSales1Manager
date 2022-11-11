@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import openpyxl 
 from openpyxl.utils.dataframe import dataframe_to_rows
-import excel
+#import excel
 from pandas import DataFrame
 from uploadtodb.models import *
 from django.core import serializers
-import json
+#import json
 from django.core.serializers.json import DjangoJSONEncoder
 
 
@@ -85,12 +85,12 @@ def showDaily(request):
 
 def calculateDaily(request):
     
-    contents = tbl_invoice_daily.objects.all()
+    contents = tbl_invoice_daily.objects.all().name
 
+    print(contents)
     # a = contents.tbl_product.product_code
     # b = contents.tbl_product.product_barcode
     # c = contents.tbl_product.product_name
-    # d = 
 
     request.session['calculate_daily_contents'] =   serializers.serialize("json",contents, cls=DjangoJSONEncoder)
     
