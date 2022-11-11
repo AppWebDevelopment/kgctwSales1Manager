@@ -13,6 +13,9 @@ class tbl_product(models.Model):
 
     def __str__(self):
         return self.product_name
+    
+    class Meta:
+        verbose_name_plural = 'product_master_data'
 
     objects = models.Manager()
 
@@ -32,6 +35,9 @@ class tbl_store(models.Model):
     def __str__(self):
         return (self.store_district + "// " + self.store_city + "// " + self.store_name )
 
+    class Meta:
+        verbose_name_plural = 'store_master_data'
+
     objects = models.Manager()
 
 class tbl_invoice_daily(models.Model):
@@ -49,5 +55,8 @@ class tbl_invoice_daily(models.Model):
 
     def __str__(self):
         return (str(self.invoice_day_date)+ " // "+ self.invoice_day_store.store_name + " // "+ self.invoice_day_product.product_name )
+
+    class Meta:
+        verbose_name_plural = 'daily_row_data'
 
     objects = models.Manager()

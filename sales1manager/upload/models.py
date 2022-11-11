@@ -12,3 +12,9 @@ class Document(models.Model):
     file_user = models.ForeignKey(User, on_delete = models.CASCADE)
     file_create_time = models.DateTimeField(auto_now_add = True)
     file_updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'[{self.file_name}] [{self.file_user}] [updated at: {self.file_updated_at}]'
+
+    class Meta:
+        verbose_name_plural = 'documents_uploaded'

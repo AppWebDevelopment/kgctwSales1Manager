@@ -19,3 +19,6 @@ class User(models.Model):
 
     def __str__(self):
         return f'[{self.user_id}]{self.user_name}:Validation {self.user_validation}'
+
+    class Meta:
+        verbose_name_plural = 'user_data'
